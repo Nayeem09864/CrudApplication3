@@ -22,4 +22,6 @@ public interface BookService {
     public void deleteBook(@PathVariable Long id);
 
     public Book addBookByCheckingTitle(@RequestBody Book book);
+
+    public Book getBookByType(@PathVariable String type);
 }

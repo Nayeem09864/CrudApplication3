@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 //import org.antlr.v4.runtime.misc.NotNull;
 
+
 @Entity
 public class Book {
     @Id
@@ -23,15 +24,27 @@ public class Book {
     @NotNull(message = "Cannot be null.")
     private String author;
 
+    private BookType bookType;
+
+
     // Getters, setters, and constructors (including no-args constructor)
-    public Book(Long id, String title, String author) {
+    public Book(Long id, String title, String author,BookType bookType) {
         this.id = id;
         this.title = title;
         this.author = author;
+        this.bookType=bookType;
     }
 
     public Book() {
 
+    }
+
+    public BookType getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(BookType bookType) {
+        this.bookType = bookType;
     }
 
     public Long getId() {

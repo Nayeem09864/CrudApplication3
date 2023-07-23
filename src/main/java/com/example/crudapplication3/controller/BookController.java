@@ -10,12 +10,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
-    private final BookService bookService;
 
     @Autowired
-    public BookController(BookService bookService) {
-        this.bookService=bookService;
-    }
+    private BookService bookService;
+
+//    @Autowired
+//    public BookController(BookService bookService) {
+//        this.bookService=bookService;
+//    }
 
     @GetMapping
     public List<Book> getAllBooks() {
@@ -31,6 +33,11 @@ public class BookController {
     @GetMapping("/title/{title}")
     public Book getBookByTitle(@PathVariable String title) {
         return bookService.getBookByTitle(title);
+    }
+
+    @GetMapping("/type/{type}")
+    public Book getBookByType(@PathVariable String type) {
+        return bookService.getBookByType(type);
     }
 
     @PostMapping("")

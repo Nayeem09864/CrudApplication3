@@ -10,15 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService{
-    private BookRepository bookRepository;
 
     @Autowired
-    public void BookService(BookRepository bookRepository) {
-        this.bookRepository=bookRepository;
-    }
+    private BookRepository bookRepository;
+
+
+
+//    @Autowired
+//    public void BookService(BookRepository bookRepository) {
+//        this.bookRepository=bookRepository;
+//    }
 
     @Transactional
     public List<Book> getAllBooks() {
@@ -37,11 +42,11 @@ public class BookServiceImpl implements BookService{
 
     @Transactional
     public Book updateBook(@PathVariable Long id, @RequestBody Book updatedBook) {
-        Book existingBook = bookRepository.findById(id).orElse(null);
-        if (existingBook != null) {
-            existingBook.setTitle(updatedBook.getTitle());
-            existingBook.setAuthor(updatedBook.getAuthor());
-            return bookRepository.save(existingBook);
+        Optional<Book> existingBook = bookRepository.findById(id);
+        if (existingBook.isPresent()) {
+            existingBook.get().setTitle(updatedBook.getTitle());
+            existingBook.get().setAuthor(updatedBook.getAuthor());
+            return bookRepository.save(existingBook.get());
         }
         return null;
     }
@@ -75,5 +80,10 @@ public class BookServiceImpl implements BookService{
             System.out.println("Already exists this title");
             return null;
         }
+    }
+
+
+    public Book getBookByType(@PathVariable String type) {
+        return bookRepository.getBookByType(type);
     }
 }
