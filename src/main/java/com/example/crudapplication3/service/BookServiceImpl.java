@@ -1,6 +1,7 @@
 package com.example.crudapplication3.service;
 
 import com.example.crudapplication3.entity.Book;
+import com.example.crudapplication3.entity.BookType;
 import com.example.crudapplication3.repository.BookRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +84,8 @@ public class BookServiceImpl implements BookService{
     }
 
 
-    public List<Book> getBookByType(@PathVariable String type) {
+    public List<Book> getBookByType(@PathVariable BookType type) {
+        //System.out.println("Get book by type: "+bookRepository.getBookByType(type.name()));
         return bookRepository.getBookByType(type);
     }
 }

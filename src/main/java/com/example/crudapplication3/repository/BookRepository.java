@@ -1,6 +1,7 @@
 package com.example.crudapplication3.repository;
 
 import com.example.crudapplication3.entity.Book;
+import com.example.crudapplication3.entity.BookType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,5 +19,5 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     Book addBookByCheckingTitle(@Param("title")  String title);
 
     @Query("SELECT b FROM Book b WHERE b.bookType = :type")
-    List<Book> getBookByType(@Param("type")  String type);
+    List<Book> getBookByType(@Param("type") BookType type);
 }

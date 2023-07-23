@@ -1,6 +1,7 @@
 package com.example.crudapplication3.controller;
 
 import com.example.crudapplication3.entity.Book;
+import com.example.crudapplication3.entity.BookType;
 import com.example.crudapplication3.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,8 @@ public class BookController {
     }
 
     @GetMapping("/type/{type}")
-    public List<Book> getBookByType(@PathVariable String type) {
+    public List<Book> getBookByType(@PathVariable BookType type) {
+        System.out.println("getBookByType called");
         return bookService.getBookByType(type);
     }
 

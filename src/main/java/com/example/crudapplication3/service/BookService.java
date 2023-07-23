@@ -1,6 +1,7 @@
 package com.example.crudapplication3.service;
 
 import com.example.crudapplication3.entity.Book;
+import com.example.crudapplication3.entity.BookType;
 import jakarta.transaction.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,5 +24,5 @@ public interface BookService {
 
     public Book addBookByCheckingTitle(@RequestBody Book book);
 
-    public List<Book> getBookByType(@PathVariable String type);
+    public List<Book> getBookByType(@PathVariable BookType type);
 }
