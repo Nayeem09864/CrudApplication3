@@ -22,16 +22,27 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("id/{id}")
     public Book getBookById(@PathVariable Long id) {
         //return bookRepository.findById(id).orElse(null);
         return bookService.getBookById(id);
+    }
+
+    @GetMapping("/title/{title}")
+    public Book getBookByTitle(@PathVariable String title) {
+        return bookService.getBookByTitle(title);
     }
 
     @PostMapping("")
     public Book addBook(@RequestBody Book book) {
         //return bookRepository.save(book);
         return bookService.addBook(book);
+    }
+
+    @PostMapping("/checkTitle")
+    public Book addBookByCheckingTitle(@RequestBody Book book) {
+        //return bookRepository.save(book);
+        return bookService.addBookByCheckingTitle(book);
     }
 
     @PutMapping("/{id}")

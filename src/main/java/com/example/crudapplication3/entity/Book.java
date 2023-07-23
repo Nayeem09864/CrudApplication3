@@ -1,6 +1,7 @@
 package com.example.crudapplication3.entity;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,15 +15,15 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Valid
+    @NotEmpty(message = "Cannot be empty.")
     @NotNull(message = "Cannot be null.")
     private String title;
 
-    //@NotNull(message = "Cannot be null.")
+    @NotEmpty(message = "Cannot be empty.")
+    @NotNull(message = "Cannot be null.")
     private String author;
 
     // Getters, setters, and constructors (including no-args constructor)
-
-
     public Book(Long id, String title, String author) {
         this.id = id;
         this.title = title;
@@ -56,4 +57,5 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
+
 }
