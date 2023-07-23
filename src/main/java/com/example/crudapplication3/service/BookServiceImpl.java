@@ -72,6 +72,7 @@ public class BookServiceImpl implements BookService{
             return bookRepository.save(book);
         }
         else {
+            System.out.println("Already exists this title");
             return null;
         }
     }
