@@ -18,5 +18,5 @@ public interface BookRepository extends JpaRepository<Book,Long> {
     Book addBookByCheckingTitle(@Param("title")  String title);
 
     @Query("SELECT b FROM Book b WHERE b.bookType = :type")
-    Book getBookByType(@Param("type")  String type);
+    List<Book> getBookByType(@Param("type")  String type);
 }

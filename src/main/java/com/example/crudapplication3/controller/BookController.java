@@ -36,7 +36,7 @@ public class BookController {
     }
 
     @GetMapping("/type/{type}")
-    public Book getBookByType(@PathVariable String type) {
+    public List<Book> getBookByType(@PathVariable String type) {
         return bookService.getBookByType(type);
     }
 

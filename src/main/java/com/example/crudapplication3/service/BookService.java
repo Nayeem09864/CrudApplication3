@@ -23,5 +23,5 @@ public interface BookService {
 
     public Book addBookByCheckingTitle(@RequestBody Book book);
 
-    public Book getBookByType(@PathVariable String type);
+    public List<Book> getBookByType(@PathVariable String type);
 }

@@ -83,7 +83,7 @@ public class BookServiceImpl implements BookService{
     }
 
 
-    public Book getBookByType(@PathVariable String type) {
+    public List<Book> getBookByType(@PathVariable String type) {
         return bookRepository.getBookByType(type);
     }
 }
