@@ -1,2 +1,47 @@
-package com.example.crudapplication3.controller;public class BookController {
+package com.example.crudapplication3.controller;
+
+import com.example.crudapplication3.entity.Book;
+import com.example.crudapplication3.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/books")
+public class BookController {
+    private final BookService bookService;
+
+    @Autowired
+    public BookController(BookService bookService) {
+        this.bookService=bookService;
+    }
+
+    @GetMapping
+    public List<Book> getAllBooks() {
+        return bookService.getAllBooks();
+    }
+
+    @GetMapping("/{id}")
+    public Book getBookById(@PathVariable Long id) {
+        //return bookRepository.findById(id).orElse(null);
+        return bookService.getBookById(id);
+    }
+
+    @PostMapping("")
+    public Book addBook(@RequestBody Book book) {
+        //return bookRepository.save(book);
+        return bookService.addBook(book);
+    }
+
+    @PutMapping("/{id}")
+    public Book updateBook(@PathVariable Long id, @RequestBody Book updatedBook) {
+        return bookService.updateBook(id,updatedBook);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBook(@PathVariable Long id) {
+        //bookRepository.deleteById(id);
+        bookService.deleteBook(id);
+    }
 }
