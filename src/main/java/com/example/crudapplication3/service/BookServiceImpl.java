@@ -53,7 +53,6 @@ public class BookServiceImpl implements BookService{
     }
 
 
-    @Transactional
     public void deleteBook(@PathVariable Long id) {
         bookRepository.deleteById(id);
     }
@@ -82,7 +81,6 @@ public class BookServiceImpl implements BookService{
             return null;
         }
     }
-
 
     public List<Book> getBookByType(@PathVariable BookType type) {
         //System.out.println("Get book by type: "+bookRepository.getBookByType(type.name()));
