@@ -54,7 +54,7 @@ public class BookController {
         return bookService.addBookByCheckingTitle(book);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public Book updateBook(@PathVariable Long id, @RequestBody Book updatedBook) {
         return bookService.updateBook(id,updatedBook);
     }

@@ -47,13 +47,14 @@ public class BookServiceImpl implements BookService{
         if (existingBook.isPresent()) {
             existingBook.get().setTitle(updatedBook.getTitle());
             existingBook.get().setAuthor(updatedBook.getAuthor());
+            existingBook.get().setBookType(updatedBook.getBookType());
             return bookRepository.save(existingBook.get());
         }
         return null;
     }
 
 
-    public void deleteBook(@PathVariable Long id) {
+    public void deleteBook( Long id) {
         bookRepository.deleteById(id);
     }
 
